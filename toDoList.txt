@@ -1,4 +1,18 @@
 TO DO LIST:
-- Split Orders one by one products and display how many bottles each one has
-- Figure out how to start packaging 
++ Split Orders one by one products and display how many bottles each one has
++ Figure out how to start packaging 
 - Try to figure out how to delete previous messages
+
+project/
++ ├── config/ // secret or environment-specific value
+  │   └── env.js 
+- ├── constants/  // fixed list of supported shops
+  │   └── shops.js
+- ├── callbacks/
+  │   └── select-shop.callback.js 
+- ├── state/
+  │   └── session.store.js // shop selected by a particular user
+- ├── keyboards/
+  │   └── main.keyboard.js
++ ├── index.js
++ └── tgBot.js 

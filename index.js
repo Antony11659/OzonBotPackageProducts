@@ -1,8 +1,8 @@
 // What should be connected when the application starts?
 import { getOrders, sortOrders, generateMessage, paginatePages } from "./lib/utils.js";
 import { mapMessages } from "./lib/message.js";
-import { SHOPS } from "./constants/shops.js"
 import { bot } from "./tgBot.js";
+import { createMainKeyboard } from "./keyboards/main.js";
 
 
 let sentMessages = [];
@@ -12,37 +12,11 @@ let itemsPerPage = 3;
 
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
-
-  await bot.sendMessage(chatId, mapMessages.mainPage.startMessage, {
-    reply_markup: {
-      inline_keyboard: [
-        [
-          {
-            text: "🏪 Raspiv Parfuma",
-            callback_data: SHOPS.RASPIV
-          }
-        ],
-        [
-          {
-            text: "🏪 La De Parfum",
-            callback_data: SHOPS.LA_DE_PARFUM
-          }
-        ],
-        [
-          {
-            text: "🏪 Motive",
-            callback_data: SHOPS.MOTIVE
-          }
-        ],
-        [
-          {
-            text: "🏪 Dubai Oil",
-            callback_data: SHOPS.DUBAI_OIL
-          }
-        ],
-      ] 
-    }
-  });
+  await bot.sendMessage(
+    chatId,
+    mapMessages.mainPage.startMessage,
+    createMainKeyboard()
+  );
 });
 
 bot.onText(/\/orders/, async (msg) => {
