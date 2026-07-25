@@ -2,7 +2,7 @@
 import { getOrders, sortOrders, generateMessage, paginatePages } from "./lib/utils.js";
 import { mapMessages } from "./lib/message.js";
 import { bot } from "./tgBot.js";
-import { createMainKeyboard } from "./keyboards/main.js";
+import { registerStartHandler } from "./handlers/start.js";
 
 
 let sentMessages = [];
@@ -10,14 +10,15 @@ let stickingOrders = [];
 let currentPage = 0;
 let itemsPerPage = 3;
 
-bot.onText(/\/start/, async (msg) => {
-  const chatId = msg.chat.id;
-  await bot.sendMessage(
-    chatId,
-    mapMessages.mainPage.startMessage,
-    createMainKeyboard()
-  );
-});
+registerStartHandler(bot)
+// bot.onText(/\/start/, async (msg) => {
+//   const chatId = msg.chat.id;
+//   await bot.sendMessage(
+//     chatId,
+//     mapMessages.mainPage.startMessage,
+//     createMainKeyboard()
+//   );
+// });
 
 bot.onText(/\/orders/, async (msg) => {
   const chatId = msg.chat.id;

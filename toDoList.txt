@@ -14,5 +14,7 @@ project/
   │   └── session.store.js // shop selected by a particular user
 - ├── keyboards/
   │   └── main.keyboard.js
+  ├── handlers/
+  │   └── start.js
 + ├── index.js
 + └── tgBot.js 
