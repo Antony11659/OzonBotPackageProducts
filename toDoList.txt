@@ -1,0 +1,4 @@
+TO DO LIST:
+- Split Orders one by one products and display how many bottles each one has
+- Figure out how to start packaging 
+- Try to figure out how to delete previous messages
