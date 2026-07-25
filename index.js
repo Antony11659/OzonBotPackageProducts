@@ -1,5 +1,7 @@
+// What should be connected when the application starts?
 import { getOrders, sortOrders, generateMessage, paginatePages } from "./lib/utils.js";
 import { mapMessages } from "./lib/message.js";
+import { SHOPS } from "./constants/shops.js"
 import { bot } from "./tgBot.js";
 
 
@@ -17,25 +19,25 @@ bot.onText(/\/start/, async (msg) => {
         [
           {
             text: "🏪 Raspiv Parfuma",
-            callback_data: "raspiv"
+            callback_data: SHOPS.RASPIV
           }
         ],
         [
           {
             text: "🏪 La De Parfum",
-            callback_data: "laDeParfum"
+            callback_data: SHOPS.LA_DE_PARFUM
           }
         ],
         [
           {
             text: "🏪 Motive",
-            callback_data: "motive"
+            callback_data: SHOPS.MOTIVE
           }
         ],
         [
           {
             text: "🏪 Dubai Oil",
-            callback_data: "dubaiOil"
+            callback_data: SHOPS.DUBAI_OIL
           }
         ],
       ] 
