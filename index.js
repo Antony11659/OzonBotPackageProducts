@@ -4,12 +4,7 @@ import { mapMessages } from "./lib/message.js";
 import { bot } from "./tgBot.js";
 import { registerStartHandler } from "./handlers/start.js";
 import { getSession } from "./state/session.js";
-
-
-// let sentMessages = [];
-// let stickingOrders = [];
-// let currentPage = 0;
-// let itemsPerPage = 3;
+import { handleRaspiv } from "./callbacks/raspiv.js";
 
 registerStartHandler(bot)
 
@@ -24,32 +19,32 @@ bot.on("callback_query", async (query) => {
   const session = getSession(chatId);
 
   if (query.data === "raspiv"){
-    const orders = await getOrders();
-    const totalBottlesMessage = generateMessage.getTotalBottles(orders);
+    // const orders = await getOrders();
+    // const totalBottlesMessage = generateMessage.getTotalBottles(orders);
   
-    await bot.sendMessage(chatId, totalBottlesMessage,
-      { 
-        parse_mode: "HTML",
-        reply_markup: {
-        inline_keyboard: [
+    // await bot.sendMessage(chatId, totalBottlesMessage,
+    //   { 
+    //     parse_mode: "HTML",
+    //     reply_markup: {
+    //     inline_keyboard: [
     
-          [
+    //       [
     
-            {
+    //         {
     
-              text: mapMessages.mainPage.startSticking,
+    //           text: mapMessages.mainPage.startSticking,
     
-              callback_data: "sticking"
+    //           callback_data: "sticking"
     
-            }
+    //         }
     
-          ]
+    //       ]
     
-        ]
+    //     ]
     
-      }
-    });
-
+    //   }
+    // });
+    await handleRaspiv(bot, query);
     return;
   }
 
