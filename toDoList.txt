@@ -5,16 +5,16 @@ TO DO LIST:
 
 project/
 + ├── config/ // secret or environment-specific value
-  │   └── env.js 
+  │   + └── env.js 
 - ├── constants/  // fixed list of supported shops
-  │   └── shops.js
+  │   + └── shops.js
 - ├── callbacks/
-  │   └── select-shop.callback.js 
+  │   - └── select-shop.callback.js 
 - ├── state/
-  │   └── session.store.js // shop selected by a particular user
+  │   - └── session.store.js // shop selected by a particular user
 - ├── keyboards/
-  │   └── main.keyboard.js
-  ├── handlers/
-  │   └── start.js
+  │   + └── main.keyboard.js
+- ├── handlers/
+  │   - └── start.js
 + ├── index.js
 + └── tgBot.js 
