@@ -4,9 +4,18 @@ const sessions = new Map();
 const createSession = () => {
     return {
       sentMessages: [],
-      stickingOrders: [],
-      currentPage: 0,
-      itemsPerPage: 3
+      sticking: {
+        orders: [],
+        currentPage: 0,
+        itemsPerPage: 3,
+        sentMessages: []
+      },
+      packaging: {
+        orders: [],
+        currentPage: 0,
+        itemsPerPage: 3,
+        sentMessages: []
+      }
     }
 }
 
@@ -15,4 +24,4 @@ export const getSession = (chatId) => {
         sessions.set(chatId, createSession())
     }
     return sessions.get(chatId);
-}
+};

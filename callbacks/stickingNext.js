@@ -4,29 +4,29 @@ import { mapMessages } from "../lib/message.js";
 
 
 
-export const handleNext = async (bot, query, session) => {
+export const handleStickingNext = async (bot, query, session) => {
     const chatId = query.message.chat.id;
-    const amountPages = Math.ceil(session.stickingOrders.length / session.itemsPerPage);
+    const amountPages = Math.ceil(session.sticking.orders.length / session.sticking.itemsPerPage);
 
     if (amountPages === 0) {
       return;
     }
   
-    if (session.currentPage >= amountPages - 1) {
+    if (session.sticking.currentPage >= amountPages - 1) {
       await bot.sendMessage(chatId, mapMessages.sticking.finishMessage, makePackagingKeyboard());
 
       return;
     }
 
-    session.currentPage ++;
+    session.sticking.currentPage ++;
 
     const { orderPage } = paginatePages(
-      session.stickingOrders,
-      session.currentPage,
-      session.itemsPerPage
+      session.sticking.orders,
+      session.sticking.currentPage,
+      session.sticking.itemsPerPage
     );
 
-    const message = generateMessage.getStickingMessage(orderPage, session.currentPage, amountPages);
+    const message = generateMessage.getStickingMessage(orderPage, session.sticking.currentPage, amountPages);
 
     await bot.editMessageText(message, {
       chat_id: chatId,
@@ -37,7 +37,7 @@ export const handleNext = async (bot, query, session) => {
           [
             {
               text: mapMessages.sticking["Next"],
-              callback_data: "next"
+              callback_data: "stickingNext"
             }
           ]
         ]

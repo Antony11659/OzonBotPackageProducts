@@ -5,9 +5,12 @@ import { bot } from "./tgBot.js";
 import { registerStartHandler } from "./handlers/start.js";
 import { getSession } from "./state/session.js";
 import { handleRaspiv } from "./callbacks/raspiv.js";
-import { handleNext } from "./callbacks/next.js";
+import { handleStickingNext } from "./callbacks/stickingNext.js";
+import { handleSticking } from "./callbacks/sticking.js";
+import { handlePackaging } from "./callbacks/packaging.js";
+import { handlePackagingNext } from "./callbacks/packagingNext.js";
 
-registerStartHandler(bot)
+registerStartHandler(bot);
 
 bot.on("callback_query", async (query) => {
   await bot.answerCallbackQuery(query.id);
@@ -24,63 +27,25 @@ bot.on("callback_query", async (query) => {
     return;
   }
 
-  if (query.data === 'next') {
-    await handleNext(bot, query, session);
+  if (query.data === 'stickingNext') {
+    await handleStickingNext(bot, query, session);
+    return;
+  }
 
+  if (query.data === 'packagingNext') {
+    await handlePackagingNext(bot, query, session);
     return;
   }
 
   if (query.data === "packaging") {
-    const orders = await getOrders();
+    await handlePackaging(bot, query, session);
     return;
   }
 
   if (query.data === 'sticking') {
-    const orders = await getOrders();
-
-    session.stickingOrders = sortOrders(orders);
-    session.currentPage = 0;
-
-    if (session.stickingOrders.length === 0) {
-      await bot.sendMessage(chatId, "No orders found.");
-      return;
-
-    }
-
-    const amountPages = Math.ceil(session.stickingOrders.length / session.itemsPerPage)
-
-    const { orderPage } = paginatePages(session.stickingOrders, session.currentPage, session.itemsPerPage);
-
-    const message = generateMessage.getStickingMessage(
-      orderPage,
-      session.currentPage,
-      amountPages
-    );
-
-    await bot.sendMessage(chatId, message, 
-      { 
-        parse_mode: "HTML",
-        reply_markup: {
-         inline_keyboard: [
-  
-          [
-
-            {
-  
-              text: mapMessages.sticking['Next'],
-  
-              callback_data: "next"
-  
-            }
-  
-          ]
-  
-        ]
-  
-      }
-  })
-
+    await handleSticking(bot, query, session);
   }
+  return;
 } )
 
 console.log('Bot is running...')
