@@ -1,10 +1,10 @@
-import { generateMessage, paginatePages } from "../lib/utils.js";
+import { deleteActiveMessage, generateMessage, paginatePages } from "../lib/utils.js";
 import { mapMessages } from "../lib/message.js";
-
 
 
 export const handlePackagingNext = async (bot, query, session) => {
     const chatId = query.message.chat.id;
+
     const amountPages = Math.ceil(session.packaging.orders.length / session.packaging.itemsPerPage);
 
     if (amountPages === 0) {
@@ -12,8 +12,9 @@ export const handlePackagingNext = async (bot, query, session) => {
     }
   
     if (session.packaging.currentPage >= amountPages - 1) {
-      await bot.sendMessage(chatId, mapMessages.packaging.finishMessage, makePackagingKeyboard());
-
+      await deleteActiveMessage(bot, chatId);
+      const sentMessage = await bot.sendMessage(chatId, mapMessages.packaging.finishMessage);
+      session.activeMessageId = sentMessage.message_id;
       return;
     }
 

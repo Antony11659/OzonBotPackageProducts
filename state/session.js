@@ -3,7 +3,7 @@ const sessions = new Map();
 
 const createSession = () => {
     return {
-      sentMessages: [],
+      activeMessageId: null,
       sticking: {
         orders: [],
         currentPage: 0,
@@ -13,7 +13,7 @@ const createSession = () => {
       packaging: {
         orders: [],
         currentPage: 0,
-        itemsPerPage: 3,
+        itemsPerPage: 10,
         sentMessages: []
       }
     }

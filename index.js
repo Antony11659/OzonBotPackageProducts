@@ -1,6 +1,4 @@
 // What should be connected when the application starts?
-import { getOrders, sortOrders, generateMessage, paginatePages } from "./lib/utils.js";
-import { mapMessages } from "./lib/message.js";
 import { bot } from "./tgBot.js";
 import { registerStartHandler } from "./handlers/start.js";
 import { getSession } from "./state/session.js";
@@ -10,7 +8,7 @@ import { handleSticking } from "./callbacks/sticking.js";
 import { handlePackaging } from "./callbacks/packaging.js";
 import { handlePackagingNext } from "./callbacks/packagingNext.js";
 
-registerStartHandler(bot);
+await registerStartHandler(bot);
 
 bot.on("callback_query", async (query) => {
   await bot.answerCallbackQuery(query.id);
@@ -23,7 +21,7 @@ bot.on("callback_query", async (query) => {
   const session = getSession(chatId);
 
   if (query.data === "raspiv"){
-    await handleRaspiv(bot, query);
+    await handleRaspiv(bot, query, session);
     return;
   }
 
