@@ -2,6 +2,7 @@ import { makePackagingKeyboard } from "../keyboards/packaging.js";
 import { generateMessage, paginatePages } from "../lib/utils.js";
 import { mapMessages } from "../lib/message.js";
 import { deleteActiveMessage } from "../lib/utils.js";
+import { makeNextKeyboard } from "../keyboards/next.js";
 
 
 export const handleStickingNext = async (bot, query, session) => {
@@ -30,19 +31,5 @@ export const handleStickingNext = async (bot, query, session) => {
 
     const message = generateMessage.getStickingMessage(orderPage, session.sticking.currentPage, amountPages);
 
-    await bot.editMessageText(message, {
-      chat_id: chatId,
-      message_id: query.message.message_id,
-      parse_mode: "HTML",
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: mapMessages.sticking["Next"],
-              callback_data: "stickingNext"
-            }
-          ]
-        ]
-      }
-    });
+    await bot.editMessageText(message, makeNextKeyboard(query, 'sticking'));
 }

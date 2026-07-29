@@ -10,7 +10,7 @@ export const makeStickingKeyboard = () => {
         
                 {
         
-                  text: mapMessages.mainPage.startSticking,
+                  text: mapMessages.sticking.startMessage,
         
                   callback_data: "sticking"
         

@@ -8,7 +8,7 @@ export const makePackagingKeyboard = () => {
           inline_keyboard: [
             [
               {
-                text: mapMessages.packaging["startPackaging"],
+                text: mapMessages.packaging.startMessage,
                 callback_data: "packaging"
               }
             ]

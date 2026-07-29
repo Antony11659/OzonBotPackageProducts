@@ -1,6 +1,7 @@
 import { getOrders, deleteActiveMessage } from "../lib/utils.js";
 import { sortOrders, paginatePages, generateMessage } from "../lib/utils.js";
 import { mapMessages } from "../lib/message.js";
+import { makeNextKeyboard } from "../keyboards/next.js";
 
 
 export const handleSticking = async(bot, query, session) => {
@@ -28,28 +29,7 @@ export const handleSticking = async(bot, query, session) => {
       amountPages
     );
 
-    const sentMessage = await bot.sendMessage(chatId, message, 
-      { 
-        parse_mode: "HTML",
-        reply_markup: {
-         inline_keyboard: [
-  
-          [
-
-            {
-  
-              text: mapMessages.sticking['Next'],
-  
-              callback_data: "stickingNext"
-  
-            }
-  
-          ]
-  
-        ]
-  
-      }
-  })
+    const sentMessage = await bot.sendMessage(chatId, message, makeNextKeyboard(null, 'sticking'));
 
   session.activeMessageId = sentMessage.message_id;
 
