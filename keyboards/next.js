@@ -11,6 +11,10 @@ export const makeNextKeyboard = (query, type) => {
         inline_keyboard: [
           [
             {
+              text: mapMessages[type]["Previous"],
+              callback_data: `${type}Previous`
+            },
+            {
               text: mapMessages[type]["Next"],
               callback_data: mapMessages[type].callback
             }

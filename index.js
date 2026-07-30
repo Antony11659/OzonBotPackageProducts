@@ -7,6 +7,8 @@ import { handleStickingNext } from "./callbacks/stickingNext.js";
 import { handleSticking } from "./callbacks/sticking.js";
 import { handlePackaging } from "./callbacks/packaging.js";
 import { handlePackagingNext } from "./callbacks/packagingNext.js";
+import { handleStickingPrevious } from "./callbacks/stickingPrevious.js";
+import { handlePackagingPrevious } from "./callbacks/packagingPrevious.js";
 
 await registerStartHandler(bot);
 
@@ -25,6 +27,10 @@ bot.on("callback_query", async (query) => {
     return;
   }
 
+  if (query.data === "stickingPrevious") {
+    await handleStickingPrevious(bot, query, session);
+  }
+
   if (query.data === 'stickingNext') {
     await handleStickingNext(bot, query, session);
     return;
@@ -32,6 +38,11 @@ bot.on("callback_query", async (query) => {
 
   if (query.data === 'packagingNext') {
     await handlePackagingNext(bot, query, session);
+    return;
+  }
+
+  if (query.data === 'packagingPrevious') {
+    await handlePackagingPrevious(bot, query, session);
     return;
   }
 
