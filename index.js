@@ -1,4 +1,8 @@
 // What should be connected when the application starts?
+
+import dns from "node:dns";// fix deploying
+dns.setDefaultResultOrder("ipv4first");// fix deploying
+
 import { bot } from "./tgBot.js";
 import { registerStartHandler } from "./handlers/start.js";
 import { getSession } from "./state/session.js";
