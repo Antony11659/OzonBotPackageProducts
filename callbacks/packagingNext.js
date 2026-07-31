@@ -1,6 +1,7 @@
 import { deleteActiveMessage, generateMessage, paginatePages } from "../lib/utils.js";
 import { mapMessages } from "../lib/message.js";
 import { makeNextKeyboard } from "../keyboards/next.js";
+import { deleteSession } from "../state/session.js";
 
 
 export const handlePackagingNext = async (bot, query, session) => {
@@ -16,6 +17,19 @@ export const handlePackagingNext = async (bot, query, session) => {
       await deleteActiveMessage(bot, chatId);
       const sentMessage = await bot.sendMessage(chatId, mapMessages.packaging.finishMessage(session.packaging.orders.length));
       session.activeMessageId = sentMessage.message_id;
+      
+      setTimeout(async () => {
+        try {
+          await deleteActiveMessage(bot, chatId, session);
+          deleteSession(chatId);
+        } catch (error) {
+          console.error(
+            "Failed to clean up packaging session:",
+            error
+          );
+        }
+      }, 5000);
+  
       return;
     }
 

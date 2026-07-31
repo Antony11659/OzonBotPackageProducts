@@ -25,3 +25,7 @@ export const getSession = (chatId) => {
     }
     return sessions.get(chatId);
 };
+
+export const deleteSession = (chatId) => {
+  sessions.delete(chatId);
+};
