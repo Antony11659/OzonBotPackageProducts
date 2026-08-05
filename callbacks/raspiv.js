@@ -9,8 +9,6 @@ export const handleRaspiv = async (bot, query, session) => {
   await deleteActiveMessage(bot, chatId);
 
   const orders = await getOrders();
-
-  console.log(`amount of orders = ${orders.length}`);
   
   const totalBottlesMessage = generateMessage.getTotalBottles(orders);
   
