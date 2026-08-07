@@ -3,7 +3,10 @@ const sessions = new Map();
 
 const createSession = () => {
     return {
+      groupedOrders: null,
+      amountOfOrders: null,
       activeMessageId: null,
+      shopName: null,
       sticking: {
         orders: [],
         currentPage: 0,

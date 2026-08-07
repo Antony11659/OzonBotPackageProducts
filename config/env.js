@@ -15,6 +15,11 @@ export const env = {
         raspiv: {
             apiKey: required('OZON_API_KEY_RASPIV'),
             clientId: required('OZON_CLIENT_ID_RASPIV')
+        },
+        
+        motive: {
+            apiKey: required('OZON_API_KEY_MOTIVE'),
+            clientId: required('OZON_CLIENT_ID_MOTIVE')
         }
     }  
 }

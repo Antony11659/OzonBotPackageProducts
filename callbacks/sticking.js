@@ -9,9 +9,7 @@ export const handleSticking = async(bot, query, session) => {
 
     await deleteActiveMessage(bot, chatId);
 
-    const orders = await getOrders();
-
-    session.sticking.orders = sortOrders(orders);
+    session.sticking.orders = sortOrders(session.groupedOrders);
     session.sticking.currentPage = 0;
 
     if (session.sticking.orders.length === 0) {

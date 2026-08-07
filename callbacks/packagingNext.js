@@ -15,7 +15,7 @@ export const handlePackagingNext = async (bot, query, session) => {
   
     if (session.packaging.currentPage >= amountPages - 1) {
       await deleteActiveMessage(bot, chatId);
-      const sentMessage = await bot.sendMessage(chatId, mapMessages.packaging.finishMessage(session.packaging.orders.length));
+      const sentMessage = await bot.sendMessage(chatId, mapMessages.packaging.finishMessage(session.amountOfOrders));
       session.activeMessageId = sentMessage.message_id;
       
       setTimeout(async () => {

@@ -8,7 +8,7 @@ export const handlePackaging = async(bot, query, session) => {
 
     await deleteActiveMessage(bot, chatId);
 
-    const orders = await getPackageOrders();
+    const orders = await getPackageOrders(session.shopName);
     
     session.packaging.orders = orders;
     session.packaging.currentPage = 0;

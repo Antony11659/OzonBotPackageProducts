@@ -3,12 +3,17 @@ import { getOrders } from "../lib/utils.js";
 import { generateMessage } from "../lib/utils.js";
 import { deleteActiveMessage } from "../lib/utils.js";
 
-export const handleRaspiv = async (bot, query, session) => {
+export const handleShop = async (bot, query, session) => {
   const chatId = query.message.chat.id;
+  session.shopName = query.data;
 
   await deleteActiveMessage(bot, chatId);
 
-  const orders = await getOrders();
+  const { orders, amountOfOrders } = await getOrders(session.shopName);
+  session.amountOfOrders = amountOfOrders;
+  session.groupedOrders = orders;
+
+  console.log(`Shop Name: ${session.shopName} \namount of orders = ${session.amountOfOrders} \n${new Date().toISOString()}`);
   
   const totalBottlesMessage = generateMessage.getTotalBottles(orders);
   

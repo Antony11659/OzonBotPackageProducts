@@ -1,5 +1,5 @@
 import { getSession } from "../state/session.js";
-import { handleRaspiv } from "../callbacks/raspiv.js";
+import { handleShop } from "../callbacks/shop.js";
 import { handleStickingNext } from "../callbacks/stickingNext.js";
 import { handleSticking } from "../callbacks/sticking.js";
 import { handlePackaging } from "../callbacks/packaging.js";
@@ -8,7 +8,8 @@ import { handleStickingPrevious } from "../callbacks/stickingPrevious.js";
 import { handlePackagingPrevious } from "../callbacks/packagingPrevious.js";
 
 const callbackHandlers = {
-    raspiv: handleRaspiv,
+    raspiv: handleShop,
+    motive: handleShop,
     sticking: handleSticking,
     stickingNext: handleStickingNext,
     stickingPrevious: handleStickingPrevious,
