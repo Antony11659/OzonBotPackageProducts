@@ -6,6 +6,7 @@ const createSession = () => {
       groupedOrders: null,
       amountOfOrders: null,
       activeMessageId: null,
+      startedAt: null,
       shopName: null,
       sticking: {
         orders: [],
@@ -16,7 +17,7 @@ const createSession = () => {
       packaging: {
         orders: [],
         currentPage: 0,
-        itemsPerPage: 10,
+        itemsPerPage: 5,
         sentMessages: []
       }
     }

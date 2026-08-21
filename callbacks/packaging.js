@@ -1,5 +1,4 @@
-import { generateMessage, getPackageOrders, paginatePages } from "../lib/utils.js";
-import { mapMessages } from "../lib/message.js";
+import { generateMessage, paginatePages } from "../lib/utils.js";
 import { deleteActiveMessage } from "../lib/utils.js";
 import { makeNextKeyboard } from "../keyboards/next.js";
 
@@ -8,14 +7,12 @@ export const handlePackaging = async(bot, query, session) => {
 
     await deleteActiveMessage(bot, chatId);
 
-    const orders = await getPackageOrders(session.shopName);
-    
-    session.packaging.orders = orders;
+    const { orders } = session.packaging;
     session.packaging.currentPage = 0;
 
     const amountPages = Math.ceil(session.packaging.orders.length / session.packaging.itemsPerPage);
     
-    const { orderPage } = paginatePages(orders,  session.packaging.currentPage, amountPages);
+    const { orderPage } = paginatePages(orders,  session.packaging.currentPage, session.packaging.itemsPerPage);
     const message = generateMessage.getPackageMessage(orderPage,  session.packaging.currentPage, amountPages);
     
     const sentMessage = await bot.sendMessage(chatId, message, makeNextKeyboard(null, 'packaging'))

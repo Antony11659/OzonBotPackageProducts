@@ -20,6 +20,16 @@ export const env = {
         motive: {
             apiKey: required('OZON_API_KEY_MOTIVE'),
             clientId: required('OZON_CLIENT_ID_MOTIVE')
+        },
+
+        laDePurfum: {
+            apiKey: required('OZON_API_KEY_LA_DE_PURFUM'),
+            clientId: required('OZON_CLIENT_ID_LA_DE_PURFUM')
+        },
+
+        dubaiOil: {
+            apiKey: required('OZON_API_KEY_DUBAI_OIL'),
+            clientId: required('OZON_CLIENT_ID_DUBAI_OIL')
         }
     }  
 }

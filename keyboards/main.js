@@ -14,7 +14,7 @@ export function createMainKeyboard() {
         [
           {
             text: "🏪 La De Parfum",
-            callback_data: SHOPS.LA_DE_PARFUM,
+            callback_data: SHOPS.LA_DE_PURFUM,
           },
         ],
         [

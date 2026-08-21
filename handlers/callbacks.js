@@ -8,6 +8,8 @@ import { handleStickingPrevious } from "../callbacks/stickingPrevious.js";
 import { handlePackagingPrevious } from "../callbacks/packagingPrevious.js";
 
 const callbackHandlers = {
+    dubaiOil: handleShop,
+    laDePurfum: handleShop,
     raspiv: handleShop,
     motive: handleShop,
     sticking: handleSticking,
@@ -20,12 +22,13 @@ const callbackHandlers = {
 
 export const registerCallbackHandler = (bot) => {
     bot.on("callback_query", async (query) => {
+      try {
         await bot.answerCallbackQuery(query.id);
   
         if (!query.message) {
           return;
         }
-  
+        
         const handler = callbackHandlers[query.data]
   
         if (!handler) {
@@ -37,5 +40,14 @@ export const registerCallbackHandler = (bot) => {
         const session = getSession(chatId);
   
         await handler(bot, query, session);
+      }  catch (error) {
+        console.error("Callback failed:", {
+          code: error.code,
+          message: error.message,
+          cause: error.cause?.code
+    
+        });
+    
+      }
     })
   };

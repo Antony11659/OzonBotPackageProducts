@@ -1,6 +1,5 @@
-import { getOrders, deleteActiveMessage } from "../lib/utils.js";
+import { deleteActiveMessage } from "../lib/utils.js";
 import { sortOrders, paginatePages, generateMessage } from "../lib/utils.js";
-import { mapMessages } from "../lib/message.js";
 import { makeNextKeyboard } from "../keyboards/next.js";
 
 
