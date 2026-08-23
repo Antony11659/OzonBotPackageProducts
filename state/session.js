@@ -11,13 +11,13 @@ const createSession = () => {
       sticking: {
         orders: [],
         currentPage: 0,
-        itemsPerPage: 3,
+        itemsPerPage: 5,
         sentMessages: []
       },
       packaging: {
         orders: [],
         currentPage: 0,
-        itemsPerPage: 5,
+        itemsPerPage: 7,
         sentMessages: []
       }
     }

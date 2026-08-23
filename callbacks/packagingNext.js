@@ -2,7 +2,7 @@ import { deleteActiveMessage, generateMessage, paginatePages } from "../lib/util
 import { mapMessages } from "../lib/message.js";
 import { makeNextKeyboard } from "../keyboards/next.js";
 import { deleteSession } from "../state/session.js";
-import { countPackagingTime } from "../lib/metrics.js";
+import { getMinutes } from "../lib/metrics.js";
 
 
 export const handlePackagingNext = async (bot, query, session) => {
@@ -17,7 +17,7 @@ export const handlePackagingNext = async (bot, query, session) => {
     if (session.packaging.currentPage >= amountPages - 1) {
       await deleteActiveMessage(bot, chatId);
 
-      const userPackagingTime = countPackagingTime(session.startedAt);
+      const userPackagingTime = getMinutes(session.startedAt);
       const sentMessage = await bot.sendMessage(chatId, mapMessages.packaging.finishMessage(session.amountOfOrders, userPackagingTime));
       
       session.activeMessageId = sentMessage.message_id;
@@ -36,7 +36,7 @@ export const handlePackagingNext = async (bot, query, session) => {
 
       console.log(
         `User: ${query.from.username}\n`+
-        `Packaged ${session.amountOfOrders} pc. for ${userPackagingTime} min`
+        `Packaged ${session.amountOfOrders} pc. for ${userPackagingTime} min.`
       )
       
       return;

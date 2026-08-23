@@ -12,11 +12,13 @@ export const makeNextKeyboard = (query, type) => {
           [
             {
               text: mapMessages[type]["Previous"],
-              callback_data: `${type}Previous`
+              callback_data: `${type}Previous`,
+              style: 'danger',
             },
             {
               text: mapMessages[type]["Next"],
-              callback_data: mapMessages[type].callback
+              callback_data: mapMessages[type].callback,
+              style: "success",
             }
           ]
         ]

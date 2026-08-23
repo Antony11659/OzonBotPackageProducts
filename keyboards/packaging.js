@@ -9,7 +9,8 @@ export const makePackagingKeyboard = () => {
             [
               {
                 text: mapMessages.packaging.startMessage,
-                callback_data: "packaging"
+                callback_data: "packaging",
+                style: "success",
               }
             ]
           ]

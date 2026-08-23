@@ -9,24 +9,28 @@ export function createMainKeyboard() {
           {
             text: "🏪 Raspiv Parfuma",
             callback_data: SHOPS.RASPIV,
+            style: 'primary'
           },
         ],
         [
           {
             text: "🏪 La De Parfum",
             callback_data: SHOPS.LA_DE_PURFUM,
+            style: 'primary'
           },
         ],
         [
           {
             text: "🏪 Motive",
             callback_data: SHOPS.MOTIVE,
+            style: 'primary'
           },
         ],
         [
           {
             text: "🏪 Dubai Oil",
             callback_data: SHOPS.DUBAI_OIL,
+            style: 'primary'
           },
         ],
       ],

@@ -11,8 +11,8 @@ export const makeStickingKeyboard = () => {
                 {
         
                   text: mapMessages.sticking.startMessage,
-        
-                  callback_data: "sticking"
+                  callback_data: "sticking",
+                  style: "success",
         
                 }
         
