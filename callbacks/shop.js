@@ -21,8 +21,7 @@ export const handleShop = async (bot, query, session) => {
   console.log(
     `Shop Name: ${session.shopName}\n`+
     `User: ${query.from.username}\n`+
-    `Amount of orders = ${session.amountOfOrders}\n`+
-    `--------------------`
+    `Amount of orders = ${session.amountOfOrders}`
     );
   
   const totalBottlesMessage = generateMessage.getTotalBottles(orders);

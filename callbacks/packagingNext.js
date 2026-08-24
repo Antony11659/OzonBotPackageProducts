@@ -35,8 +35,8 @@ export const handlePackagingNext = async (bot, query, session) => {
       }, 7000);
 
       console.log(
-        `User: ${query.from.username}\n`+
-        `Packaged ${session.amountOfOrders} pc. for ${userPackagingTime} min.`
+        `User: ${query.from.username} packaged for ${userPackagingTime} min.\n`+
+        `--------------------------------`
       )
       
       return;
