@@ -9,4 +9,6 @@ export const bot = new TelegramBot(token, { polling: true });
 
 bot.setMyCommands([
     { command: 'start', description: 'Перезапустить Бота' },
+    { command: 'stick', description: 'Начать Полклейку' },
+    { command: 'package', description: 'Начать Упаковку' },
   ]);

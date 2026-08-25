@@ -1,11 +1,13 @@
 import { bot } from "./tgBot.js";
 import { registerStartHandler } from "./handlers/start.js";
 import { registerCallbackHandler } from "./handlers/callbacks.js";
+import { registerStickHandler } from "./handlers/stick.js";
 
 // What should be connected when the application starts?
 
-await registerStartHandler(bot);
-await registerCallbackHandler(bot);
+registerStartHandler(bot);
+registerCallbackHandler(bot);
+registerStickHandler(bot);
 
-console.log('Bot is running...')
+console.log('Bot is running...');
 

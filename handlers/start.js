@@ -7,7 +7,7 @@ export const registerStartHandler = async (bot) => {
     bot.onText(/\/start/, async (msg) => {
         const chatId = msg.chat.id;
 
-        deleteActiveMessage(bot, chatId); // delete if User has previous session
+        await deleteActiveMessage(bot, chatId); // delete if User has previous session
         deleteSession(chatId);
 
         const session = getSession(chatId);

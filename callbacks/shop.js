@@ -31,4 +31,5 @@ export const handleShop = async (bot, query, session) => {
   );
  
   session.activeMessageId = sentMessage.message_id;
+
 };
