@@ -21,7 +21,7 @@ export const handleStickingNext = async (bot, query, session) => {
       const sentMessage = await bot.sendMessage(chatId, mapMessages.sticking.finishMessage(session.amountOfOrders), makePackagingKeyboard());
       session.activeMessageId = sentMessage.message_id;
       
-      console.log(`User: ${query.from.username} sticked for ${userStickingTime} min.`);
+      console.log(`Sticked: ${userStickingTime} min.`);
 
       return;
     }

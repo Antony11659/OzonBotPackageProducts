@@ -19,9 +19,10 @@ export const handleShop = async (bot, query, session) => {
   session.groupedOrders = orders;
 
   console.log(
-    `Shop Name: ${session.shopName}\n`+
+    `------------------------\n`+
     `User: ${query.from.username}\n`+
-    `Amount of orders = ${session.amountOfOrders}`
+    `Shop Name: ${session.shopName}\n`+
+    `Amount of orders: ${session.amountOfOrders}`
     );
   
   const totalBottlesMessage = generateMessage.getTotalBottles(orders);

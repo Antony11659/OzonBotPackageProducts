@@ -1,9 +1,9 @@
 import { getSession } from "../state/session.js";
 import { deleteActiveMessage } from "../lib/utils.js";
-import { handleSticking } from "../callbacks/sticking.js";
+import { handlePackaging } from "../callbacks/packaging.js";
 
-export const registerStickHandler = async (bot) => {
-    bot.onText(/\/stick/, async (msg) => {
+export const registerPackageHandler = async (bot) => {
+    bot.onText(/\/package/, async (msg) => {
         const chatId = msg.chat.id;
 
         await deleteActiveMessage(bot, chatId); // delete if User has previous session
@@ -11,11 +11,11 @@ export const registerStickHandler = async (bot) => {
         const session = getSession(chatId);
       
         if (!session.shopName) {
-            const sentMessage = await bot.sendMessage(chatId, 'Ты не выбрал(а) Магазин!!!\n Перезагрузи Бота и выбери магазин!!!');
+            const sentMessage = await bot.sendMessage(chatId, 'Ты не выбрала Магазин!!!\n Перезагрузи Бота и выбери магазин!!!');
             session.activeMessageId = sentMessage.message_id;
             return;
         }
-        
-        await handleSticking(bot, { message: msg }, session);
+    
+        await handlePackaging(bot, { message: msg }, session);
       });
 };

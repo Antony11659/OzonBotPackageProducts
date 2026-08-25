@@ -35,7 +35,7 @@ export const handlePackagingNext = async (bot, query, session) => {
       }, 7000);
 
       console.log(
-        `User: ${query.from.username} packaged for ${userPackagingTime} min.\n`+
+        `Packaged: ${userPackagingTime} min.\n`+
         `--------------------------------`
       )
       
