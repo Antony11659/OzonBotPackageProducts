@@ -3,9 +3,11 @@ import { getOrders } from "../lib/utils.js";
 import { generateMessage } from "../lib/utils.js";
 import { deleteActiveMessage } from "../lib/utils.js";
 import { checkUnknownSku } from "../repositories/updateProducts.js";
+import { admin } from "../constants/admin.js"
 
 export const handleShop = async (bot, query, session) => {
   const chatId = query.message.chat.id;
+
   session.shopName = query.data;
 
   checkUnknownSku(session.shopName);
@@ -18,8 +20,7 @@ export const handleShop = async (bot, query, session) => {
   session.amountOfOrders = amountOfOrders;
   session.groupedOrders = orders;
 
-  console.log(
-    `------------------------\n`+
+  await bot.sendMessage(admin.chatId,
     `User: ${query.from.username}\n`+
     `Shop Name: ${session.shopName}\n`+
     `Amount of orders: ${session.amountOfOrders}`

@@ -3,6 +3,7 @@ import { mapMessages } from "../lib/message.js";
 import { makeNextKeyboard } from "../keyboards/next.js";
 import { deleteSession } from "../state/session.js";
 import { getMinutes } from "../lib/metrics.js";
+import { admin } from "../constants/admin.js";
 
 
 export const handlePackagingNext = async (bot, query, session) => {
@@ -34,9 +35,8 @@ export const handlePackagingNext = async (bot, query, session) => {
         }
       }, 7000);
 
-      console.log(
-        `Packaged: ${userPackagingTime} min.\n`+
-        `--------------------------------`
+      await bot.sendMessage(admin.chatId,
+        `User ${query.from.username} packaged: ${userPackagingTime} min.`
       )
       
       return;
