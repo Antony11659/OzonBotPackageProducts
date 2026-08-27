@@ -36,7 +36,7 @@ export const handlePackagingNext = async (bot, query, session) => {
       }, 7000);
 
       await bot.sendMessage(admin.chatId,
-        `User ${query.from.username} packaged: ${userPackagingTime} min.`
+        `User ${query.from.username} packaged ${session.amountOfOrders} for ${userPackagingTime} min.`
       )
       
       return;

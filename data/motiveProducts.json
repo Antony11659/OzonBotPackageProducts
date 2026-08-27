@@ -1,5 +1,41 @@
 {
 
+  "5622351854": {
+    "ozonName": "Angels Share 1 ml",
+    "name": "Angels Share",
+    "volume": 1,
+    "quantity": 1
+  },
+  "5622545112": {
+    "ozonName": "Angels Share 50ml",
+    "name": "Angels Share",
+    "volume": 50,
+    "quantity": 1
+  },
+  "5622545595": {
+    "ozonName": "Angels Share 20ml",
+    "name": "Angels Share",
+    "volume": 20,
+    "quantity": 1
+  },
+  "5622543669": {
+    "ozonName": "Angels Share 10ml",
+    "name": "Angels Share",
+    "volume": 10,
+    "quantity": 1
+  },
+  "5622545060": {
+    "ozonName": "Angels Share 30ml",
+    "name": "Angels Share",
+    "volume": 30,
+    "quantity": 1
+  },
+  "5622545087": {
+    "ozonName": "Angels Share 3ml",
+    "name": "Angels Share",
+    "volume": 3,
+    "quantity": 1
+  },
   "2097528694": {
     "ozonName": "фен",
     "name": "фен",
@@ -36,8 +72,8 @@
     "volume": 10,
     "quantity": 1
   },
-  "3314175651": {
-    "ozonName": "Marfa  5ml_deleted",
+  "5621551557": {
+    "ozonName": "Marfa  5ml",
     "name": "Marfa",
     "volume": 5,
     "quantity": 1

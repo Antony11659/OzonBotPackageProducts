@@ -10,15 +10,24 @@ export const handleShop = async (bot, query, session) => {
 
   session.shopName = query.data;
 
-  checkUnknownSku(session.shopName);
-
+  try {
+    await checkUnknownSku(session.shopName);
+  } catch (error) {
+    console.error("Unknown SKU check failed:", error.message);
+  }
+   
   await deleteActiveMessage(bot, chatId);
 
   const { orders, amountOfOrders, packageOrders } = await getOrders(session.shopName);
-
+  
   session.packaging.orders = packageOrders;
   session.amountOfOrders = amountOfOrders;
   session.groupedOrders = orders;
+
+  if (!session.groupedOrders) {
+    await bot.sendMessage(chatId, "Please choose shop again.");
+    return;
+  }
 
   await bot.sendMessage(admin.chatId,
     `User: ${query.from.username}\n`+
