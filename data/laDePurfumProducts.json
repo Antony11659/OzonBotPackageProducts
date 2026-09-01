@@ -283,13 +283,13 @@
   },
   "2358574291": {
     "ozonName": "молекула_02_3мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 3,
     "quantity": 1
   },
   "2358577140": {
     "ozonName": "молекула_02_5мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 5,
     "quantity": 1
   },
@@ -5383,13 +5383,13 @@
   },
   "3302599893": {
     "ozonName": "молекула_02_10мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 10,
     "quantity": 1
   },
   "3302616788": {
     "ozonName": "молекула_02_50мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 50,
     "quantity": 1
   },
@@ -8455,7 +8455,7 @@
   },
   "3841942698": {
     "ozonName": "молекула_02_30мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 30,
     "quantity": 1
   },
@@ -8545,7 +8545,7 @@
   },
   "3888645746": {
     "ozonName": "молекула 02_20мл.",
-    "name": "Molecule 02",
+    "name": "Escentric",
     "volume": 20,
     "quantity": 1
   },
