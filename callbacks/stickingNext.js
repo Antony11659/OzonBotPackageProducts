@@ -19,7 +19,7 @@ export const handleStickingNext = async (bot, query, session) => {
   
     if (session.sticking.currentPage >= amountPages - 1) {
       await deleteActiveMessage(bot, chatId);
-      const sentMessage = await bot.sendMessage(chatId, mapMessages.sticking.finishMessage(session.amountOfOrders), makePackagingKeyboard());
+      const sentMessage = await bot.sendMessage(chatId, mapMessages.sticking.finishMessage(session.amountOfOrders, query.from.username), makePackagingKeyboard());
       session.activeMessageId = sentMessage.message_id;
       
       await bot.sendMessage(admin.chatId, `User: ${ query.from.username } sticked ${session.amountOfOrders} for ${userStickingTime} min.`);
